@@ -35,7 +35,7 @@ position = Vector2(740, 314)
 position = Vector2(507, 778)
 
 [node name="ChanceRock" parent="." unique_id=1220339038 instance=ExtResource("5_iywne")]
-position = Vector2(290, 589)
+position = Vector2(265, 533)
 
 [node name="EnemySlime" parent="." unique_id=323435522 instance=ExtResource("6_u5sy4")]
 position = Vector2(339, 624)

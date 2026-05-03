@@ -1,19 +1,29 @@
-[gd_scene format=3 uid="uid://bmovplat00102"]
+[gd_scene load_steps=4 format=3 uid="uid://bmovplat00102"]
 
-[ext_resource type="Script" uid="uid://chgpvaicjjuc6" path="res://scripts/moving_platform.gd" id="1_mov_script"]
-[ext_resource type="Texture2D" uid="uid://c3uo8jaircuku" path="res://assets/sprites/platforms.png" id="2_plat_tex"]
+[ext_resource type="Script" path="res://scripts/moving_platform.gd" id="1_mov_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/platforms.png" id="2_plat_tex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_movplat"]
-size = Vector2(43, 5)
+size = Vector2(44, 5)
 
-[node name="MovingPlatform" type="AnimatableBody2D" unique_id=804525809]
+[node name="MovingPlatform" type="AnimatableBody2D"]
 script = ExtResource("1_mov_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=828924570]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_plat_tex")
 region_enabled = true
 region_rect = Rect2(0, 32, 48, 8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1820818264]
-position = Vector2(-0.5, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_movplat")
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-30, 0)
+collision_mask = 1
+enabled = true
+
+[node name="RayRight" type="RayCast2D" parent="."]
+target_position = Vector2(30, 0)
+collision_mask = 1
+enabled = true

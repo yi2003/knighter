@@ -1,19 +1,17 @@
 extends AnimatableBody2D
 
 @export var speed: float = 100.0
-@export var distance: float = 200.0
 
-var _start_pos: Vector2
 var _direction: int = 1
 
-
-func _ready() -> void:
-	_start_pos = global_position
+@onready var _ray_left: RayCast2D = $RayLeft
+@onready var _ray_right: RayCast2D = $RayRight
 
 
 func _physics_process(delta: float) -> void:
-	var offset: float = global_position.x - _start_pos.x
-	if abs(offset) >= distance:
-		_direction *= -1
-
 	global_position.x += _direction * speed * delta
+
+	if _direction > 0 and _ray_right.is_colliding():
+		_direction = -1
+	elif _direction < 0 and _ray_left.is_colliding():
+		_direction = 1
