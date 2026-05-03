@@ -4,10 +4,13 @@
 [ext_resource type="SpriteFrames" uid="uid://bslimeframes" path="res://resources/slime_sprite_frames.tres" id="2_slime_frames"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
-size = Vector2(24, 48)
+size = Vector2(24, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stomp"]
 size = Vector2(28, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_damage"]
+size = Vector2(32, 23)
 
 [node name="EnemySlime" type="CharacterBody2D" unique_id=323435522]
 script = ExtResource("1_slime_script")
@@ -16,15 +19,23 @@ script = ExtResource("1_slime_script")
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_slime_frames")
 animation = &"walk"
+frame_progress = 0.9852556
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1586993201]
-position = Vector2(0, 12)
+position = Vector2(0, 16.5)
 shape = SubResource("RectangleShape2D_body")
 
 [node name="StompArea" type="Area2D" parent="." unique_id=805167150]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea" unique_id=1627533767]
-position = Vector2(0, -20)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_stomp")
 
+[node name="DamageArea" type="Area2D" parent="." unique_id=1092008373]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=1163546330]
+position = Vector2(0, 21.5)
+shape = SubResource("RectangleShape2D_damage")
+
 [connection signal="body_entered" from="StompArea" to="." method="_on_stomp_area_body_entered"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

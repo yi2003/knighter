@@ -14,6 +14,13 @@ scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_sprite_frames")
 animation = &"idle"
 
+[node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D" unique_id=1237609824]
+scale = Vector2(0.5, 0.5)
+limit_left = -10000095
+limit_top = -9999194
+limit_right = 9999905
+limit_bottom = 926
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1203806008]
 position = Vector2(-1, 6)
 shape = SubResource("RectangleShape2D_g2els")
