@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bcoin0000103"]
+
+[ext_resource type="Script" uid="uid://didvuqhdy88sl" path="res://scripts/coin.gd" id="1_coin_script"]
+[ext_resource type="SpriteFrames" uid="uid://2yltd18gaptl" path="res://resources/coin_sprite_frames.tres" id="2_sprite_frames"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_coin"]
+radius = 3.1622777
+
+[node name="Coin" type="Area2D" unique_id=1739605291]
+scale = Vector2(2, 2)
+script = ExtResource("1_coin_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=262330827]
+sprite_frames = ExtResource("2_sprite_frames")
+animation = &"spin"
+frame_progress = 0.94516706
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591544548]
+shape = SubResource("CircleShape2D_coin")

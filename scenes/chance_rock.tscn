@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://miv38kwp5pwe"]
+
+[ext_resource type="Script" uid="uid://dxtclf8ic8vot" path="res://scripts/chance_rock.gd" id="1_rock_script"]
+[ext_resource type="Texture2D" uid="uid://daycwke2pbtyi" path="res://assets/sprites/world_tileset.png" id="2_tileset_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hit"]
+size = Vector2(30.5, 35.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_solid"]
+size = Vector2(30.5, 24.5)
+
+[node name="ChanceRock" type="Area2D" unique_id=1157218891]
+script = ExtResource("1_rock_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1005293796]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tileset_tex")
+region_enabled = true
+region_rect = Rect2(48, 32, 16, 16)
+
+[node name="HitCollision" type="CollisionShape2D" parent="." unique_id=1988268628]
+position = Vector2(-0.25, 6.25)
+shape = SubResource("RectangleShape2D_hit")
+
+[node name="SolidBody" type="StaticBody2D" parent="HitCollision" unique_id=545850383]
+position = Vector2(0.25, -6.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitCollision/SolidBody" unique_id=888575492]
+position = Vector2(-0.25, 0.75)
+shape = SubResource("RectangleShape2D_solid")

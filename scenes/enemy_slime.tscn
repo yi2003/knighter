@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dh343wbcsgkxj"]
+
+[ext_resource type="Script" uid="uid://b48tekxdxokg8" path="res://scripts/enemy_slime.gd" id="1_slime_script"]
+[ext_resource type="SpriteFrames" uid="uid://bslimeframes" path="res://resources/slime_sprite_frames.tres" id="2_slime_frames"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(24, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stomp"]
+size = Vector2(28, 8)
+
+[node name="EnemySlime" type="CharacterBody2D" unique_id=323435522]
+script = ExtResource("1_slime_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=925873442]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("2_slime_frames")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1586993201]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="StompArea" type="Area2D" parent="." unique_id=805167150]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea" unique_id=1627533767]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_stomp")
+
+[connection signal="body_entered" from="StompArea" to="." method="_on_stomp_area_body_entered"]

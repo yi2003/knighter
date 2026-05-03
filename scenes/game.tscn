@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bgamescn00105"]
+
+[ext_resource type="PackedScene" uid="uid://bknightp1ayer" path="res://scenes/player.tscn" id="1_player_scene"]
+[ext_resource type="PackedScene" uid="uid://bcoin0000103" path="res://scenes/coin.tscn" id="4_coin_scene"]
+[ext_resource type="PackedScene" uid="uid://miv38kwp5pwe" path="res://scenes/chance_rock.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://bkill0n00104" path="res://scenes/killzone.tscn" id="5_kz_scene"]
+[ext_resource type="PackedScene" uid="uid://suvik4x5icla" path="res://scenes/layout.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://dh343wbcsgkxj" path="res://scenes/enemy_slime.tscn" id="6_u5sy4"]
+
+[node name="Game" type="Node2D" unique_id=217276472]
+
+[node name="Map" parent="." unique_id=2101710229 instance=ExtResource("6_p57ef")]
+position = Vector2(123, 176)
+scale = Vector2(2, 2)
+
+[node name="Player" parent="." unique_id=576723825 instance=ExtResource("1_player_scene")]
+position = Vector2(219, 246)
+
+[node name="Coin1" parent="." unique_id=2109447763 instance=ExtResource("4_coin_scene")]
+position = Vector2(419, 258)
+
+[node name="Coin2" parent="." unique_id=1733395361 instance=ExtResource("4_coin_scene")]
+position = Vector2(1077, 453)
+
+[node name="Coin3" parent="." unique_id=1573597862 instance=ExtResource("4_coin_scene")]
+position = Vector2(348, 388)
+
+[node name="Coin4" parent="." unique_id=81954075 instance=ExtResource("4_coin_scene")]
+position = Vector2(591, 261)
+
+[node name="Coin5" parent="." unique_id=1739605291 instance=ExtResource("4_coin_scene")]
+position = Vector2(740, 314)
+
+[node name="Killzone" parent="." unique_id=1616071307 instance=ExtResource("5_kz_scene")]
+position = Vector2(507, 778)
+
+[node name="ChanceRock" parent="." unique_id=1220339038 instance=ExtResource("5_iywne")]
+position = Vector2(290, 589)
+
+[node name="EnemySlime" parent="." unique_id=323435522 instance=ExtResource("6_u5sy4")]
+position = Vector2(339, 624)
