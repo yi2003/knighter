@@ -1,26 +1,31 @@
-[gd_scene format=3 uid="uid://bknightp1ayer"]
+[gd_scene load_steps=6 format=3 uid="uid://bknightp1ayer"]
 
-[ext_resource type="Script" uid="uid://cmprdj2kkkdrd" path="res://scripts/player.gd" id="1_player_script"]
-[ext_resource type="SpriteFrames" uid="uid://bknightframes" path="res://resources/knight_sprite_frames.tres" id="2_sprite_frames"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_player_script"]
+[ext_resource type="SpriteFrames" path="res://resources/knight_sprite_frames.tres" id="2_sprite_frames"]
+[ext_resource type="AudioStream" uid="uid://c821g88fbj4gw" path="res://assets/sounds/jump.wav" id="3_jump_sfx"]
+[ext_resource type="AudioStream" uid="uid://c04mjw0ci31ai" path="res://assets/sounds/hurt.wav" id="4_hurt_sfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(20, 34)
 
-[node name="Player" type="CharacterBody2D" unique_id=1093860803]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_player_script")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1585638071]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_sprite_frames")
 animation = &"idle"
 
-[node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D" unique_id=1237609824]
+[node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
 scale = Vector2(0.5, 0.5)
-limit_left = -10000095
-limit_top = -9999194
-limit_right = 9999905
 limit_bottom = 926
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1203806008]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 6)
 shape = SubResource("RectangleShape2D_g2els")
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jump_sfx")
+
+[node name="HurtSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hurt_sfx")

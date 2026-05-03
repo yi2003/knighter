@@ -7,6 +7,8 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var dead: bool = false
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _jump_sfx: AudioStreamPlayer2D = $JumpSFX
+@onready var _hurt_sfx: AudioStreamPlayer2D = $HurtSFX
 
 
 func _physics_process(delta: float) -> void:
@@ -21,6 +23,7 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_velocity
+		_jump_sfx.play()
 
 	var direction: float = Input.get_axis("ui_left", "ui_right")
 	if direction:
@@ -41,6 +44,7 @@ func die() -> void:
 	velocity.y = -200
 	collision_layer = 0
 	_sprite.modulate = Color(1, 1, 1, 0.6)
+	_hurt_sfx.play()
 
 
 func _check_off_screen() -> void:

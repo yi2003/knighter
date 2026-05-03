@@ -8,6 +8,8 @@ var _hit_count: int = 0
 var _can_hit: bool = true
 
 @onready var _sprite: Sprite2D = $Sprite2D
+@onready var _hit_sfx: AudioStreamPlayer2D = $HitSFX
+@onready var _break_sfx: AudioStreamPlayer2D = $BreakSFX
 
 
 func _ready() -> void:
@@ -30,9 +32,12 @@ func _on_body_entered(body: Node2D) -> void:
 	_flash()
 
 	if _hit_count >= hits_required:
+		_break_sfx.play()
 		_spawn_coin()
+		await get_tree().create_timer(0.3).timeout
 		queue_free()
 	else:
+		_hit_sfx.play()
 		await get_tree().create_timer(0.5).timeout
 		_can_hit = true
 

@@ -9,6 +9,7 @@ var _death_y: float = 0.0
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _stomp_area: Area2D = $StompArea
+@onready var _death_sfx: AudioStreamPlayer2D = $DeathSFX
 
 
 func _physics_process(delta: float) -> void:
@@ -45,6 +46,7 @@ func _die() -> void:
 	collision_layer = 0
 	_stomp_area.set_deferred("monitoring", false)
 	_sprite.modulate = Color(1, 1, 1, 0.6)
+	_death_sfx.play()
 
 
 func _on_damage_area_body_entered(body: Node2D) -> void:
